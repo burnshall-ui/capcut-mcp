@@ -119,7 +119,7 @@ defmodule CapcutMcp.Tools.AddClip do
       String.trim(path) == "" ->
         {:error, "Invalid file_path: path is empty"}
 
-      Path.type(path) != :absolute ->
+      not absolute_path?(path) ->
         {:error, "Invalid file_path: expected absolute path, got #{inspect(path)}"}
 
       validate_file_exists?() and not File.exists?(path) ->
@@ -131,6 +131,16 @@ defmodule CapcutMcp.Tools.AddClip do
   end
 
   defp validate_file_path(path), do: {:error, "Invalid file_path: #{inspect(path)}"}
+
+  # file_path points at media on the machine running CapCut, which is Windows or
+  # macOS. Path.type/1 answers for the OS *this server* runs on, so on Linux it
+  # reports every "C:/clips/take.mp4" as relative and rejects it. Recognise both
+  # conventions explicitly, independent of the host OS.
+  defp absolute_path?(path) do
+    String.starts_with?(path, "/") or
+      String.starts_with?(path, "\\\\") or
+      Regex.match?(~r|^[A-Za-z]:[\\/]|, path)
+  end
 
   defp validate_file_exists?, do: Application.get_env(:capcut_mcp, :validate_file_exists, true)
 
