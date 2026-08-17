@@ -11,7 +11,11 @@ defmodule CapcutMcp.MixProject do
       dialyzer: [
         plt_add_apps: [:mix, :ex_unit],
         ignore_warnings: ".dialyzer_ignore.exs",
-        flags: [:error_handling, :unknown, :underspecs]
+        flags: [:error_handling, :unknown, :underspecs],
+        # Outside _build so CI can cache the PLT on the toolchain and mix.lock
+        # alone, instead of invalidating it whenever the build directory changes.
+        plt_local_path: "priv/plts",
+        plt_core_path: "priv/plts"
       ],
       test_coverage: [tool: ExCoveralls]
     ]

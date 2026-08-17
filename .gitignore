@@ -38,3 +38,6 @@ capcut_mcp-*.tar
 /.cursor/
 /.claude/
 .cursorrules
+
+# Dialyzer PLT files (cached in CI, never committed)
+/priv/plts/
