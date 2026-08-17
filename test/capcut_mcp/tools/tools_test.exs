@@ -666,7 +666,7 @@ defmodule CapcutMcp.ToolsTest do
     assert {:ok, msg} =
              AddClip.execute(%{
                "project_id" => id,
-               "file_path" => "C:/Users/tspor/Videos/test.mp4",
+               "file_path" => "C:/Users/testuser/Videos/test.mp4",
                "start_ms" => 0,
                "duration_ms" => 5000
              })
@@ -682,7 +682,7 @@ defmodule CapcutMcp.ToolsTest do
     assert {:ok, msg} =
              AddClip.execute(%{
                "project_id" => id,
-               "file_path" => "C:/Users/tspor/Music/track.mp3",
+               "file_path" => "C:/Users/testuser/Music/track.mp3",
                "start_ms" => 0,
                "duration_ms" => 3000
              })
@@ -698,7 +698,7 @@ defmodule CapcutMcp.ToolsTest do
     assert {:error, msg} =
              AddClip.execute(%{
                "project_id" => id,
-               "file_path" => "C:/Users/tspor/Videos/test.mp4",
+               "file_path" => "C:/Users/testuser/Videos/test.mp4",
                "start_ms" => 0,
                "duration_ms" => 5000,
                "track_index" => 99
@@ -715,7 +715,7 @@ defmodule CapcutMcp.ToolsTest do
     assert {:error, msg} =
              AddClip.execute(%{
                "project_id" => id,
-               "file_path" => "C:/Users/tspor/Videos/test.mp4",
+               "file_path" => "C:/Users/testuser/Videos/test.mp4",
                "start_ms" => -1,
                "duration_ms" => 5000
              })
@@ -731,7 +731,7 @@ defmodule CapcutMcp.ToolsTest do
     assert {:error, msg} =
              AddClip.execute(%{
                "project_id" => id,
-               "file_path" => "C:/Users/tspor/Videos/test.mp4",
+               "file_path" => "C:/Users/testuser/Videos/test.mp4",
                "start_ms" => 0,
                "duration_ms" => 0
              })
@@ -782,7 +782,7 @@ defmodule CapcutMcp.ToolsTest do
     assert {:error, msg} =
              AddClip.execute(%{
                "project_id" => id,
-               "file_path" => "C:/Users/tspor/Documents/notes.txt",
+               "file_path" => "C:/Users/testuser/Documents/notes.txt",
                "start_ms" => 0,
                "duration_ms" => 5000
              })
