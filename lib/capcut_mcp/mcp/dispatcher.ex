@@ -1,6 +1,5 @@
 defmodule CapcutMcp.MCP.Dispatcher do
   @moduledoc "Routes JSON-RPC tool calls to the appropriate tool module."
-  require Logger
   alias CapcutMcp.MCP.Protocol
 
   alias CapcutMcp.Tools.{

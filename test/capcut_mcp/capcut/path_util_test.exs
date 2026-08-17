@@ -16,10 +16,10 @@ defmodule CapcutMcp.CapCut.PathUtilTest do
     test "normalizes the Path.join hybrid that caused the original bug" do
       # The exact shape observed in the broken MCP-written entry:
       # %LOCALAPPDATA% returns backslashes; Path.join adds forward slashes.
-      hybrid = "C:\\Users\\tspor\\AppData\\Local/CapCut/User Data/Projects"
+      hybrid = "C:\\Users\\testuser\\AppData\\Local/CapCut/User Data/Projects"
 
       assert PathUtil.to_forward(hybrid) ==
-               "C:/Users/tspor/AppData/Local/CapCut/User Data/Projects"
+               "C:/Users/testuser/AppData/Local/CapCut/User Data/Projects"
     end
 
     test "handles empty string" do
